@@ -1,0 +1,27 @@
+name: Release to prod
+
+on:
+  push:
+    branches:
+    - main
+
+env:
+  WEBAPP_NAME: replace-with-your-webapp-name
+  RESOURCE_GROUP: replace-with-your-rg-name
+  SLOT_NAME: staging  # Create a slot on your web app called "staging"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@v1
+
+    - name: Set up Java 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: 11
+        distribution: microsoft
+
+  
